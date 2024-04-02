@@ -7,7 +7,7 @@ type ChildrenProps = {
 function Main(props: ChildrenProps) {
     return (
         <Container>
-            <main className='py-[50px]'>{props.children}</main>
+            <main style={{ minHeight: 'calc(85vh - 25px)' }} className='py-[50px]'>{props.children}</main>
         </Container>
     )
 }

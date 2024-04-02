@@ -6,7 +6,7 @@ type ChildrenType = {
 
 function TitleH1(props: ChildrenType) {
     return (
-        <h1 style={props.style} className='text-[32px] mb-[25px] font-medium max-[375px]:text-[22px]'>{props.children}</h1>
+        <h1 style={props.style} className='text-[32px] mb-[25px] font-medium max-[450px]:text-[22px]'>{props.children}</h1>
     )
 }
 

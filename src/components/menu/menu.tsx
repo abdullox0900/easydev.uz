@@ -1,22 +1,29 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { SiJavascript, SiTypescript } from "react-icons/si"
 import { NavLink } from 'react-router-dom'
 
 
 function Menu() {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        axios.get('https://6537a88fbb226bb85dd39095.mockapi.io/easydev/list').then((res) => setData(res.data))
+    }, [])
 
     const menu_list = [
         {
             id: 1,
             name: 'JavaScript',
-            path: '/js',
-            length: 23,
+            path: '/javascript',
+            length: data.length,
             icon: <SiJavascript className='absolute bottom-0 right-0 text-[45px] group-hover:text-[#f0db4f] rotate-12 text-slate-400' />,
         },
         {
             id: 2,
             name: 'TypeScript',
-            path: '/ts',
-            length: 15,
+            path: '/typescript',
+            length: 0,
             icon: <SiTypescript className='absolute bottom-0 right-0 text-[45px] group-hover:text-[#3178c6] rotate-12 text-slate-400' />,
         },
     ]
