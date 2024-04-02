@@ -1,20 +1,8 @@
-import { FcSurvey } from "react-icons/fc"
 import Main from '../../components/main/main'
 import { TitleH1 } from '../../components/textComponents/textComponents'
 
-import { LoadingOutlined } from '@ant-design/icons'
-import { Spin, Tag } from 'antd'
 
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemButton,
-    AccordionItemHeading,
-    AccordionItemPanel,
-} from 'react-accessible-accordion'
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 import 'react-accessible-accordion/dist/fancy-example.css'
 import { Helmet } from 'react-helmet-async'
 

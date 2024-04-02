@@ -7,7 +7,7 @@ function Home() {
     return (
         <Main>
             <Helmet>
-                <title>Easydev.uz</title>
+                <title>Easydev</title>
                 <meta name="description"
                     content="Easydev intervyu savollari" />
                 <link rel="canonical" href="https://www.easydev.uz/javascript" />
