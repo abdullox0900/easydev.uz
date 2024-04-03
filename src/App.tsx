@@ -10,6 +10,7 @@ import { SmileOutlined } from '@ant-design/icons'
 import { notification } from 'antd'
 import Version from './pages/version/version'
 import NotFound from './components/not_found/not_found'
+import QuestionInner from './pages/question_inner/question_inner'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/javascript' element={<JsPage />} />
         <Route path='/typescript' element={<TsPage />} />
         <Route path='/easydev/version' element={<Version />} />
+        <Route path='/question_inner/:id' element={<QuestionInner />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

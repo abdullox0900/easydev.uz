@@ -22,6 +22,7 @@ import { Modal } from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css'
 
 import UserForm from '../../components/user_form/user_form'
+import { NavLink } from 'react-router-dom'
 
 type QuestionArrType = {
     id: number
@@ -110,6 +111,7 @@ function JsPage() {
                                                     <p>
                                                         {item.q_answer}
                                                     </p>
+                                                    <NavLink to={`/question_inner/${item.id}`}>More</NavLink>
                                                 </AccordionItemPanel>
                                             </AccordionItem>
                                         )
