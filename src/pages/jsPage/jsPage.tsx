@@ -3,7 +3,7 @@ import Main from '../../components/main/main'
 import { TitleH1 } from '../../components/textComponents/textComponents'
 
 import { LoadingOutlined } from '@ant-design/icons'
-import { Spin, Tag } from 'antd'
+import { Spin, Tag, Button } from 'antd'
 
 import {
     Accordion,
@@ -72,7 +72,7 @@ function JsPage() {
 
             <div className='flex items-center justify-between mb-[30px]'>
                 <TitleH1 style={{ margin: 0 }}>JavaScript bo‘yicha intervyu savollari</TitleH1>
-                <button onClick={onOpenModal}>Savol yuborish</button>
+                <Button onClick={onOpenModal}>Savol yuborish</Button>
             </div>
 
             <div className='flex max-[650px]:flex-col max-[650px]:gap-[25px]'>
