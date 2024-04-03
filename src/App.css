@@ -7,3 +7,14 @@
 body {
 	font-family: 'Poppins';
 }
+
+/* examples/custom-styling.css */
+.customOverlay {
+	/* background: rgba(36, 123, 160, 0.7); */
+}
+
+.customModal {
+	width: 450px;
+	padding: 30px !important;
+	border-radius: 10px !important;
+}

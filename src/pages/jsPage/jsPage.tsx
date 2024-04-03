@@ -18,6 +18,11 @@ import { useEffect, useState } from 'react'
 import 'react-accessible-accordion/dist/fancy-example.css'
 import { Helmet } from 'react-helmet-async'
 
+import { Modal } from 'react-responsive-modal'
+import 'react-responsive-modal/styles.css'
+
+import UserForm from '../../components/user_form/user_form'
+
 type QuestionArrType = {
     id: number
     q_name: string
@@ -25,6 +30,7 @@ type QuestionArrType = {
     q_type: string
     q_language: string
 }
+
 
 function JsPage() {
 
@@ -39,6 +45,11 @@ function JsPage() {
             })
     }, [])
 
+    const [open, setOpen] = useState(false)
+
+    const onOpenModal = () => setOpen(true)
+    const onCloseModal = () => setOpen(false)
+
     return (
         <Main>
             <Helmet>
@@ -47,7 +58,23 @@ function JsPage() {
                     content="JavaScript intervyu savollari" />
                 <link rel="canonical" href="https://www.easydev.uz/javascript" />
             </Helmet>
-            <TitleH1>JavaScript bo‘yicha intervyu savollari</TitleH1>
+
+            <Modal
+                open={open}
+                onClose={onCloseModal}
+                center
+                classNames={{
+                    overlay: 'customOverlay',
+                    modal: 'customModal',
+                }}>
+                <UserForm />
+            </Modal>
+
+            <div className='flex items-center justify-between mb-[30px]'>
+                <TitleH1 style={{ margin: 0 }}>JavaScript bo‘yicha intervyu savollari</TitleH1>
+                <button onClick={onOpenModal}>Savol yuborish</button>
+            </div>
+
             <div className='flex max-[650px]:flex-col max-[650px]:gap-[25px]'>
                 <div className='w-[25%]'>
                     <span className='flex items-center max-[650px]:w-[200px]'>
