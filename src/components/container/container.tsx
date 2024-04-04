@@ -1,6 +1,5 @@
-type ChildrenType = {
-    children: React.ReactNode
-}
+// Import Type
+import { ChildrenType } from '../../types/children'
 
 function Container(props: ChildrenType) {
     return (

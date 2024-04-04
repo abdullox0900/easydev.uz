@@ -1,13 +1,20 @@
-import { Tooltip } from 'antd'
-import axios from 'axios'
+// Import React
 import { useEffect, useState } from 'react'
-import { ImYoutube2 } from "react-icons/im"
-import { TbWorldWww } from "react-icons/tb"
+
+// Import ReactRouterDom
 import { useParams } from "react-router-dom"
+
+// Import ReactIcons
+import { TbWorldWww } from "react-icons/tb"
+import { ImYoutube2 } from "react-icons/im"
+
+// Import Library
+import axios from 'axios'
+import { Tooltip } from 'antd'
+
+// Import SrcComponents
 import Main from '../../components/main/main'
 import { TitleH1, TitleH4 } from '../../components/text_components/text_components'
-
-
 
 
 function QuestionInner() {
@@ -32,8 +39,6 @@ function QuestionInner() {
                 <div className='flex justify-between items-start'>
                     <div className='w-[80%]'>
                         <TitleH1 style={{ fontSize: '22px' }}>{data?.q_name} </TitleH1>
-
-
                     </div>
 
                     <div className='w-[18%]'>

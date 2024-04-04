@@ -1,3 +1,4 @@
+// Import Type
 import { ChildrenType } from '../../types/children'
 
 function TitleH1(props: ChildrenType) {

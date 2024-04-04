@@ -1,10 +1,31 @@
+// Import React
+import { useEffect, useState } from 'react'
+
+// Import ReactRouterDom
+import { NavLink } from 'react-router-dom'
+
+// Import Type
+import { NewAllDataType } from '../../types/all'
+
+// Import == Helmet Seo ==
+import { Helmet } from 'react-helmet-async'
+
+// Import ReactIcons
 import { FcSurvey } from "react-icons/fc"
+
+// Import FireBase
+import { DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore'
+import UserForm from '../../components/user_form/user_form'
+import { AllData } from '../../lib/controller'
+
+// Import SrcComponents
 import Main from '../../components/main/main'
 import { TitleH1 } from '../../components/text_components/text_components'
 
+// Import Library
+import axios from 'axios'
 import { LoadingOutlined } from '@ant-design/icons'
 import { Button, Spin, Tag } from 'antd'
-
 import {
     Accordion,
     AccordionItem,
@@ -12,20 +33,9 @@ import {
     AccordionItemHeading,
     AccordionItemPanel,
 } from 'react-accessible-accordion'
-
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 import 'react-accessible-accordion/dist/fancy-example.css'
-import { Helmet } from 'react-helmet-async'
-
 import { Modal } from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css'
-
-import { DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore'
-import { NavLink } from 'react-router-dom'
-import UserForm from '../../components/user_form/user_form'
-import { AllData } from '../../lib/controller'
-import { NewAllDataType } from '../../types/all'
 
 type QuestionArrType = {
     id: number
@@ -40,6 +50,9 @@ function JsPage() {
 
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [open, setOpen] = useState(false)
+    const onOpenModal = () => setOpen(true)
+    const onCloseModal = () => setOpen(false)
 
     const [allData, setAllData] = useState<NewAllDataType[]>([])
 
@@ -65,13 +78,6 @@ function JsPage() {
     }, [])
 
     console.log(allData)
-
-
-    const [open, setOpen] = useState(false)
-
-    const onOpenModal = () => setOpen(true)
-    const onCloseModal = () => setOpen(false)
-
     return (
         <Main>
             <Helmet>
