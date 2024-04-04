@@ -3,7 +3,7 @@ import './App.css'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import Home from './pages/home/home'
-import JsPage from './pages/jsPage/jsPage'
+import JsPage from './pages/x_page/x_page'
 import TsPage from './pages/tsPage/tsPage'
 
 import { SmileOutlined } from '@ant-design/icons'
@@ -36,8 +36,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/javascript' element={<JsPage />} />
         <Route path='/typescript' element={<TsPage />} />
-        <Route path='/easydev/version' element={<Version />} />
         <Route path='/question_inner/:id' element={<QuestionInner />} />
+        <Route path='/easydev/version' element={<Version />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

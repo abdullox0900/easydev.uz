@@ -12,3 +12,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
+
+
+// const [mainData, setMainData] = useState<NewAllDataType[]>([])
+
+// useEffect(() => {
+//     onSnapshot(AllData, (snapshot: QuerySnapshot<DocumentData>) => {
+//         setAllData(
+//             snapshot.docs.map((doc) => {
+//                 return {
+//                     id: doc.id,
+//                     ...doc.data(),
+//                 }
+//             })
+//         )
+//     })
+// }, [])

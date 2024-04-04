@@ -5,4 +5,4 @@ import { app } from './firebase'
 export const firestore = getFirestore(app)
 
 // Collections
-export const AllData = collection(firestore, 'all')
+export const JavaScriptData = collection(firestore, 'javascript')

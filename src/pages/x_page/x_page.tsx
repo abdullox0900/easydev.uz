@@ -2,10 +2,9 @@
 import { useEffect, useState } from 'react'
 
 // Import ReactRouterDom
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 // Import Type
-import { NewAllDataType } from '../../types/all'
 
 // Import == Helmet Seo ==
 import { Helmet } from 'react-helmet-async'
@@ -15,17 +14,18 @@ import { FcSurvey } from "react-icons/fc"
 
 // Import FireBase
 import { DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore'
-import UserForm from '../../components/user_form/user_form'
-import { AllData } from '../../lib/controller'
+import { JavaScriptData } from '../../lib/controller'
+import { NewAllDataType } from '../../types/all'
 
 // Import SrcComponents
 import Main from '../../components/main/main'
 import { TitleH1 } from '../../components/text_components/text_components'
+import UserForm from '../../components/user_form/user_form'
 
 // Import Library
-import axios from 'axios'
 import { LoadingOutlined } from '@ant-design/icons'
-import { Button, Spin, Tag } from 'antd'
+import { Button, Spin } from 'antd'
+import axios from 'axios'
 import {
     Accordion,
     AccordionItem,
@@ -48,25 +48,16 @@ type QuestionArrType = {
 
 function JsPage() {
 
-    const [data, setData] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [open, setOpen] = useState(false)
     const onOpenModal = () => setOpen(true)
     const onCloseModal = () => setOpen(false)
 
-    const [allData, setAllData] = useState<NewAllDataType[]>([])
+    const [mainData, setMainData] = useState<NewAllDataType[]>([])
 
     useEffect(() => {
-        setIsLoading(true)
-        axios.get('https://6537a88fbb226bb85dd39095.mockapi.io/easydev/list').then((res) => setData(res.data))
-            .finally(() => {
-                setIsLoading(false)
-            })
-    }, [])
-
-    useEffect(() => {
-        onSnapshot(AllData, (snapshot: QuerySnapshot<DocumentData>) => {
-            setAllData(
+        onSnapshot(JavaScriptData, (snapshot: QuerySnapshot<DocumentData>) => {
+            setMainData(
                 snapshot.docs.map((doc) => {
                     return {
                         id: doc.id,
@@ -74,10 +65,12 @@ function JsPage() {
                     }
                 })
             )
+            setIsLoading(false)
         })
     }, [])
 
-    console.log(allData)
+    console.log(mainData)
+
     return (
         <Main>
             <Helmet>
@@ -107,7 +100,7 @@ function JsPage() {
                 <div className='w-[25%]'>
                     <span className='flex items-center max-[650px]:w-[200px]'>
                         <FcSurvey />
-                        Jami savollar: {data.length}.</span>
+                        Jami savollar: {mainData.length}.</span>
                 </div>
                 <div className='w-[75%] max-[650px]:w-full'>
                     {
@@ -126,17 +119,18 @@ function JsPage() {
                         ) : (
                             <Accordion allowZeroExpanded style={{ borderRadius: '10px', overflow: 'hidden' }} className='bg-white border border-1 rounded-[10px]'>
                                 {
-                                    data.map((item: QuestionArrType) => {
+                                    mainData?.map((item) => {
                                         return (
                                             <AccordionItem className='bg-slate-100' key={item.id}>
                                                 <AccordionItemHeading>
                                                     <AccordionItemButton style={{ borderBottom: '1px solid #e5e7eb' }} className='p-[13px] bg-white'>
-                                                        {item.q_name}   {item.q_type == 'beginner' ? <Tag color="green">oson</Tag> : item.q_type == 'medium' ? <Tag color="orange">Medium</Tag> : item.q_type == 'advance' ? <Tag color="red">Advance</Tag> : ''}
+                                                        {item.title}
+                                                        {/* {item.q_type == 'beginner' ? <Tag color="green">oson</Tag> : item.q_type == 'medium' ? <Tag color="orange">Medium</Tag> : item.q_type == 'advance' ? <Tag color="red">Advance</Tag> : ''} */}
                                                     </AccordionItemButton>
                                                 </AccordionItemHeading>
                                                 <AccordionItemPanel>
                                                     <p>
-                                                        {item.q_answer}
+                                                        {item.description}
                                                     </p>
                                                     <NavLink to={`/question_inner/${item.id}`}>More</NavLink>
                                                 </AccordionItemPanel>
