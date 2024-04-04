@@ -24,6 +24,7 @@ function QuestionInner() {
     const { id } = useParams()
 
     const [elementData, setElementData] = useState<any>(null)
+    const [isInnerLoading, setIsInnerLoading] = useState(true)
 
     useEffect(() => {
         const fetchElement = async () => {
@@ -32,6 +33,7 @@ function QuestionInner() {
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setElementData(docSnap.data())
+                    setIsInnerLoading(false)
                 } else {
                     console.log("Ma'lumot topilmadi!")
                 }
@@ -59,40 +61,57 @@ function QuestionInner() {
                     <div className='w-[18%]'>
                         <TitleH4 style={{ fontSize: '18px' }}>Javoblarga misollar:</TitleH4>
 
-                        <ul className='flex flex-col gap-[6px] mb-[25px]'>
-                            {
-                                elementData?.youtube.map((item, index: number) => {
-                                    return (
-                                        <li key={index}>
-                                            <Tooltip title={item.user_name}>
-                                                <a className='flex items-center gap-[5px] hover:underline group' href={item.link} target='_blank'>
-                                                    <ImYoutube2 className='text-[22px] text-slate-500' />
-                                                    <span className='text-[14px] text-slate-500'>
-                                                        {item.name}
-                                                    </span>
-                                                </a>
-                                            </Tooltip>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        {
+                            isInnerLoading ? (
+                                <div className='flex flex-col gap-[10px] animate-pulse mb-[25px]'>
+                                    <div class="h-3 bg-slate-300 rounded"></div>
+                                    <div class="h-3 bg-slate-300 rounded"></div>
+                                </div>
+                            ) : (
+                                <ul className='flex flex-col gap-[6px] mb-[25px]'>
+                                    {
+                                        elementData?.youtube.map((item, index: number) => {
+                                            return (
+                                                <li key={index}>
+                                                    <Tooltip title={item.user_name}>
+                                                        <a className='flex items-center gap-[5px] hover:underline group' href={item.link} target='_blank'>
+                                                            <ImYoutube2 className='text-[22px] text-slate-500' />
+                                                            <span className='text-[14px] text-slate-500'>
+                                                                {item.name}
+                                                            </span>
+                                                        </a>
+                                                    </Tooltip>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            )
+                        }
 
                         <TitleH4 style={{ fontSize: '18px' }}>Saytlar:</TitleH4>
 
-                        <ul className='flex flex-col gap-[6px] mb-[25px]'>
-                            {
-                                elementData?.web.map((item, index: number) => {
-                                    return (
-                                        <li className='flex items-center gap-[5px]' key={index}>
-                                            <TbWorldWww className='text-[18px] text-slate-500' />
-                                            <a href={item.link} target='_blank' className='text-[14px] text-slate-500 hover:underline'>{item.name}</a>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-
+                        {
+                            isInnerLoading ? (
+                                <div className=' flex flex-col gap-[10px] animate-pulse mb-[25px]'>
+                                    <div className="h-3 bg-slate-300 rounded"></div>
+                                    <div className="h-3 bg-slate-300 rounded"></div>
+                                </div>
+                            ) : (
+                                <ul className='flex flex-col gap-[6px] mb-[25px]'>
+                                    {
+                                        elementData?.web.map((item, index: number) => {
+                                            return (
+                                                <li className='flex items-center gap-[5px]' key={index}>
+                                                    <TbWorldWww className='text-[18px] text-slate-500' />
+                                                    <a href={item.link} target='_blank' className='text-[14px] text-slate-500 hover:underline'>{item.name}</a>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            )
+                        }
                     </div>
                 </div>
             </Main>
