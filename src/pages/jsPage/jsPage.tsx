@@ -1,9 +1,9 @@
 import { FcSurvey } from "react-icons/fc"
 import Main from '../../components/main/main'
-import { TitleH1 } from '../../components/textComponents/textComponents'
+import { TitleH1 } from '../../components/text_components/text_components'
 
 import { LoadingOutlined } from '@ant-design/icons'
-import { Spin, Tag, Button } from 'antd'
+import { Button, Spin, Tag } from 'antd'
 
 import {
     Accordion,
@@ -21,8 +21,11 @@ import { Helmet } from 'react-helmet-async'
 import { Modal } from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css'
 
-import UserForm from '../../components/user_form/user_form'
+import { DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore'
 import { NavLink } from 'react-router-dom'
+import UserForm from '../../components/user_form/user_form'
+import { AllData } from '../../lib/controller'
+import { NewAllDataType } from '../../types/all'
 
 type QuestionArrType = {
     id: number
@@ -38,6 +41,8 @@ function JsPage() {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
+    const [allData, setAllData] = useState<NewAllDataType[]>([])
+
     useEffect(() => {
         setIsLoading(true)
         axios.get('https://6537a88fbb226bb85dd39095.mockapi.io/easydev/list').then((res) => setData(res.data))
@@ -45,6 +50,22 @@ function JsPage() {
                 setIsLoading(false)
             })
     }, [])
+
+    useEffect(() => {
+        onSnapshot(AllData, (snapshot: QuerySnapshot<DocumentData>) => {
+            setAllData(
+                snapshot.docs.map((doc) => {
+                    return {
+                        id: doc.id,
+                        ...doc.data(),
+                    }
+                })
+            )
+        })
+    }, [])
+
+    console.log(allData)
+
 
     const [open, setOpen] = useState(false)
 

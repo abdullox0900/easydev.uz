@@ -1,5 +1,5 @@
 import Main from '../../components/main/main'
-import { TitleH1 } from '../../components/textComponents/textComponents'
+import { TitleH1 } from '../../components/text_components/text_components'
 
 
 

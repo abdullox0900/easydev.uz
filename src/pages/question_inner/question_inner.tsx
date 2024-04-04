@@ -1,17 +1,14 @@
+import { Tooltip } from 'antd'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { ImYoutube2 } from "react-icons/im"
+import { TbWorldWww } from "react-icons/tb"
 import { useParams } from "react-router-dom"
 import Main from '../../components/main/main'
-import { TitleH1 } from '../../components/textComponents/textComponents'
-import { Tooltip } from 'antd'
+import { TitleH1, TitleH4 } from '../../components/text_components/text_components'
 
 
 
-
-type InnerType = {
-    q_name: string
-}
 
 function QuestionInner() {
 
@@ -26,47 +23,56 @@ function QuestionInner() {
             })
     }, [])
 
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
     return (
         <>
             <Main>
                 <div className='flex justify-between items-start'>
-                    <TitleH1 className='text-[22px]'>{data?.q_name} </TitleH1>
-                    <div>
-                        <TitleH1 style={{ fontSize: '18px' }}>Javoblarga misollar:</TitleH1>
+                    <div className='w-[80%]'>
+                        <TitleH1 style={{ fontSize: '22px' }}>{data?.q_name} </TitleH1>
 
-                        <ul className='flex flex-col gap-[6px]'>
-                            <li>
-                                <Tooltip title="Ulugbek Samigjonov">
-                                    <a className='flex items-center gap-[5px] hover:underline group' href="https://www.youtube.com/watch?v=4aDeGEntGFw&list=PLpDyZ4xZcDg8fRiY6xgsQcDiMjNYJhNjE&index=3&t=28s" target='_blank'>
-                                        <ImYoutube2 className='text-[22px] text-slate-500' />
-                                        <span className='text-[14px] text-slate-500'>
-                                            JavaScript nima?
-                                        </span>
-                                    </a>
-                                </Tooltip>
-                            </li>
-                            <li>
-                                <Tooltip title="Farkhod Dadajonov">
-                                    <a className='flex items-center gap-[5px] hover:underline group' href="https://www.youtube.com/watch?v=DFyzRUsLwYE&list=PL_WK6W0Gn1I7bL0pRUxYSbTj6g8tHU6Yq&t=35" target='_blank'>
-                                        <ImYoutube2 className='text-[22px] text-slate-500' />
-                                        <span className='text-[14px] text-slate-500'>
-                                            JavaScript asoslari. Kirish.?
-                                        </span>
-                                    </a>
-                                </Tooltip>
-                            </li>
-                            <li>
-                                <Tooltip title="Zokir Rakhomov">
-                                    <a className='flex items-center gap-[5px] hover:underline group' href="https://www.youtube.com/watch?v=2k8Y4ARwuKI&list=PLBhH52c34vUR4ELOS3lTB7b3N7NJLrXuc&t=180s" target='_blank'>
-                                        <ImYoutube2 className='text-[22px] text-slate-500' />
-                                        <span className='text-[14px] text-slate-500'>
-                                            JavaScript ozi nima?
-                                        </span>
-                                    </a>
-                                </Tooltip>
-                            </li>
+
+                    </div>
+
+                    <div className='w-[18%]'>
+                        <TitleH4 style={{ fontSize: '18px' }}>Javoblarga misollar:</TitleH4>
+
+                        <ul className='flex flex-col gap-[6px] mb-[25px]'>
+                            {
+                                arr.map((item, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <Tooltip title="Ulugbek Samigjonov">
+                                                <a className='flex items-center gap-[5px] hover:underline group' href="https://www.youtube.com/watch?v=4aDeGEntGFw&list=PLpDyZ4xZcDg8fRiY6xgsQcDiMjNYJhNjE&index=3&t=28s" target='_blank'>
+                                                    <ImYoutube2 className='text-[22px] text-slate-500' />
+                                                    <span className='text-[14px] text-slate-500'>
+                                                        JavaScript nima?
+                                                    </span>
+                                                </a>
+                                            </Tooltip>
+                                        </li>
+                                    )
+                                })
+                            }
                         </ul>
+
+                        <TitleH4 style={{ fontSize: '18px' }}>Saytlar:</TitleH4>
+
+                        <ul className='flex flex-col gap-[6px] mb-[25px]'>
+                            {
+                                arr.map((item, index) => {
+                                    return (
+                                        <li className='flex items-center gap-[5px]' key={index}>
+                                            <TbWorldWww className='text-[18px] text-slate-500' />
+                                            <a href="https://javascript.info/intro" target='_blank' className='text-[14px] text-slate-500 hover:underline'>JavaScript Info</a>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+
                     </div>
                 </div>
             </Main>

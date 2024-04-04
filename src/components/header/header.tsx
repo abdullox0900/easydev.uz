@@ -1,7 +1,11 @@
-import { FcMoneyTransfer } from "react-icons/fc"
-import Container from '../container/container'
+// Import ReactRouter 
 import { NavLink } from 'react-router-dom'
 
+// Import ReactIcons
+import { FcMoneyTransfer } from "react-icons/fc"
+
+// Import LocComponents
+import Container from '../container/container'
 
 function Header() {
     return (
