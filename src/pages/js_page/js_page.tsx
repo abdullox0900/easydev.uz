@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 // Import ReactRouterDom
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Import Type
 
@@ -25,7 +25,6 @@ import UserForm from '../../components/user_form/user_form'
 // Import Library
 import { LoadingOutlined } from '@ant-design/icons'
 import { Button, Spin, Tag } from 'antd'
-import axios from 'axios'
 import {
     Accordion,
     AccordionItem,
@@ -39,10 +38,9 @@ import 'react-responsive-modal/styles.css'
 
 type QuestionArrType = {
     id: number
-    q_name: string
-    q_answer: string
-    q_type: string
-    q_language: string
+    title: string
+    level: string
+    description: string
 }
 
 
@@ -119,7 +117,7 @@ function JsPage() {
                         ) : (
                             <Accordion allowZeroExpanded style={{ borderRadius: '10px', overflow: 'hidden' }} className='bg-white border border-1 rounded-[10px]'>
                                 {
-                                    mainData?.map((item) => {
+                                    mainData?.map((item: QuestionArrType) => {
                                         return (
                                             <AccordionItem className='bg-slate-100' key={item.id}>
                                                 <AccordionItemHeading>

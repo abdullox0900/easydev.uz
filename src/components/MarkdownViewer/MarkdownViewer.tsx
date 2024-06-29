@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 
 
 interface MarkdownViewerProps {
-    apiUrl: string
+    apiUrl: any
 }
 
 const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ apiUrl }) => {
