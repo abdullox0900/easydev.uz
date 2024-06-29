@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 
 // Import ReactIcons
-import { TbWorldWww } from "react-icons/tb"
 import { ImYoutube2 } from "react-icons/im"
+import { TbWorldWww } from "react-icons/tb"
 
 // Import Library
 import { Tooltip } from 'antd'
@@ -17,7 +17,10 @@ import { TitleH1, TitleH4 } from '../../components/text_components/text_componen
 
 // Import FireBase
 import { doc, getDoc } from 'firebase/firestore'
+import 'prismjs/themes/prism-tomorrow.css'
+import MarkdownViewer from '../../components/MarkdownViewer/MarkdownViewer'
 import { JavaScriptData, firestore } from '../../lib/controller'
+
 
 function QuestionInner() {
 
@@ -50,12 +53,32 @@ function QuestionInner() {
         }
     }, [JavaScriptData, id])
 
+    console.log(elementData)
+
+
+
+    //     const codeSnippet = `
+    // function helloWorld() {
+    //     console.log("Salom, dunyo!");
+    // }
+    // helloWorld();
+    //   `
+
+    //     useEffect(() => {
+    //         Prism.highlightAll()
+    //     }, [])
+
+    // useEffect(() => {
+    //     fetch('https://firebasestorage.googleapis.com/v0/b/abdullokh-93960.appspot.com/o/new-file%2FWelcome%20file.md?alt=media&token=1ea8b5fe-1dfe-47e4-a32f-4040b9c80d2c').then(res => console.log(res))
+    // }, [])
+
     return (
         <>
             <Main>
                 <div className='flex justify-between items-start'>
-                    <div className='w-[80%]'>
+                    <div className='w-[70%]'>
                         <TitleH1 style={{ fontSize: '22px' }}>{elementData?.title} </TitleH1>
+                        <MarkdownViewer apiUrl={elementData?.file} />
                     </div>
 
                     <div className='w-[18%]'>
@@ -64,13 +87,13 @@ function QuestionInner() {
                         {
                             isInnerLoading ? (
                                 <div className='flex flex-col gap-[10px] animate-pulse mb-[25px]'>
-                                    <div class="h-3 bg-slate-300 rounded"></div>
-                                    <div class="h-3 bg-slate-300 rounded"></div>
+                                    <div className="h-3 bg-slate-300 rounded"></div>
+                                    <div className="h-3 bg-slate-300 rounded"></div>
                                 </div>
                             ) : (
                                 <ul className='flex flex-col gap-[6px] mb-[25px]'>
                                     {
-                                        elementData?.youtube.map((item, index: number) => {
+                                        elementData?.youtube.map((item: any, index: number) => {
                                             return (
                                                 <li key={index}>
                                                     <Tooltip title={item.user_name}>

@@ -24,7 +24,7 @@ import UserForm from '../../components/user_form/user_form'
 
 // Import Library
 import { LoadingOutlined } from '@ant-design/icons'
-import { Button, Spin } from 'antd'
+import { Button, Spin, Tag } from 'antd'
 import axios from 'axios'
 import {
     Accordion,
@@ -125,7 +125,7 @@ function JsPage() {
                                                 <AccordionItemHeading>
                                                     <AccordionItemButton style={{ borderBottom: '1px solid #e5e7eb' }} className='p-[13px] bg-white'>
                                                         {item.title}
-                                                        {/* {item.q_type == 'beginner' ? <Tag color="green">oson</Tag> : item.q_type == 'medium' ? <Tag color="orange">Medium</Tag> : item.q_type == 'advance' ? <Tag color="red">Advance</Tag> : ''} */}
+                                                        {item.level == 'beginner' ? <Tag color="green">oson</Tag> : item.level == 'medium' ? <Tag color="orange">orta</Tag> : item.level == 'advance' ? <Tag color="red">qiyin</Tag> : ''}
                                                     </AccordionItemButton>
                                                 </AccordionItemHeading>
                                                 <AccordionItemPanel>
