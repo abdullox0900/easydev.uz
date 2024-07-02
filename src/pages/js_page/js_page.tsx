@@ -36,14 +36,6 @@ import 'react-accessible-accordion/dist/fancy-example.css'
 import { Modal } from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css'
 
-type QuestionArrType = {
-    id: number
-    title: string
-    level: string
-    description: string
-}
-
-
 function JsPage() {
 
     const [isLoading, setIsLoading] = useState(true)
@@ -117,7 +109,7 @@ function JsPage() {
                         ) : (
                             <Accordion allowZeroExpanded style={{ borderRadius: '10px', overflow: 'hidden' }} className='bg-white border border-1 rounded-[10px]'>
                                 {
-                                    mainData?.map((item: QuestionArrType) => {
+                                    mainData?.map((item: any) => {
                                         return (
                                             <AccordionItem className='bg-slate-100' key={item.id}>
                                                 <AccordionItemHeading>
@@ -127,10 +119,10 @@ function JsPage() {
                                                     </AccordionItemButton>
                                                 </AccordionItemHeading>
                                                 <AccordionItemPanel>
-                                                    <p>
+                                                    <p className='text-green-600 font-semibold bg-white p-[6px] rounded-[10px]'>
                                                         {item.description}
                                                     </p>
-                                                    <NavLink to={`/question_inner/${item.id}`}>More</NavLink>
+                                                    <NavLink className='inline-block border-[1px] rounded-[10px] bg-white p-[5px] mt-[6px] text-gray-600' to={`/question_inner/${item.id}`}>Kopro blish</NavLink>
                                                 </AccordionItemPanel>
                                             </AccordionItem>
                                         )

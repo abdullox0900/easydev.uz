@@ -6,9 +6,9 @@ import { ImYoutube2 } from 'react-icons/im'
 import { TbWorldWww } from 'react-icons/tb'
 import { useParams } from 'react-router-dom'
 import Main from '../../components/main/main'
-import MarkdownViewer from '../../components/MarkdownViewer/MarkdownViewer'
 import { TitleH1, TitleH4 } from '../../components/text_components/text_components'
 import { JavaScriptData, firestore } from '../../lib/controller'
+import MarkdownViewer from '../../components/MarkdownViewer/MarkdownViewer'
 
 interface ElementData {
     title?: string
@@ -53,9 +53,23 @@ const QuestionInner: React.FC = () => {
     return (
         <Main>
             <div className='flex justify-between items-start'>
+
+
+
                 <div className='w-[70%]'>
-                    <TitleH1 style={{ fontSize: '22px' }}>{elementData?.title}</TitleH1>
-                    <MarkdownViewer apiUrl={elementData?.file} />
+                    {isInnerLoading ? (
+                        <div className='flex flex-col gap-[10px] animate-pulse mb-[25px]'>
+                            <div className="h-10 bg-slate-300 rounded mb-[25px]"></div>
+                            <div className="h-[400px] bg-slate-300 rounded"></div>
+                        </div>
+                    ) : (
+                        <div>
+                            <TitleH1 style={{ fontSize: '22px' }}>{elementData?.title}</TitleH1>
+
+                            <MarkdownViewer apiUrl={elementData?.file} />
+                        </div>
+                    )}
+
                 </div>
 
                 <div className='w-[18%]'>
