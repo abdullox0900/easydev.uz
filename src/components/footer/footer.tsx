@@ -1,4 +1,7 @@
+// Import ReactRouterDom
 import { NavLink } from 'react-router-dom'
+
+// Import SrcComponents
 import Container from '../container/container'
 import SocialMedia from '../social_media/social_media'
 

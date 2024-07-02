@@ -3,13 +3,14 @@ import './App.css'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import Home from './pages/home/home'
-import JsPage from './pages/jsPage/jsPage'
-import TsPage from './pages/tsPage/tsPage'
+import JsPage from './pages/js_page/js_page'
+import TsPage from './pages/ts_page/ts_page'
 
 import { SmileOutlined } from '@ant-design/icons'
 import { notification } from 'antd'
 import Version from './pages/version/version'
 import NotFound from './components/not_found/not_found'
+import QuestionInner from './pages/question_inner/question_inner'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
     openNotification()
   }, 30000)
 
+
   return (
     <>
       <Header />
@@ -34,6 +36,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/javascript' element={<JsPage />} />
         <Route path='/typescript' element={<TsPage />} />
+        <Route path='/question_inner/:id' element={<QuestionInner />} />
         <Route path='/easydev/version' element={<Version />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

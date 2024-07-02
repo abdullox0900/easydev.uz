@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import Main from '../../components/main/main'
 import Menu from '../../components/menu/menu'
-import { TitleH1 } from '../../components/textComponents/textComponents'
+import { TitleH1 } from '../../components/text_components/text_components'
 
 function Home() {
     return (
