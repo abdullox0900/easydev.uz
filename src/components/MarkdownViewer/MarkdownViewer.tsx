@@ -48,7 +48,7 @@ const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ apiUrl }) => {
                         const match = /language-(\w+)/.exec(className || '')
                         return match ? (
                             <SyntaxHighlighter
-                                {...rest}
+                                // {...rest}
                                 PreTag="div"
                                 children={String(children).replace(/\n$/, '')}
                                 language={match[1]}
